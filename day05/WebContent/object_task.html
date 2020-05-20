@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>객체 실습</title>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&display=swap" rel="stylesheet">
+<link href="object_task.css" rel="stylesheet">
+</head>
+<body>
+	<fieldset>
+		<legend>자동차 주행</legend>
+		<textarea id ="text" rows="2" cols="40">현재상태 표시</textarea>
+		<img src = "출발전.png" id = "img">
+		<input id ="input" onkeyup="actionEnter()" style = "visibility :hidden;" value="비밀번호 입력">
+		<button onclick = "SuperCar.showInput()" id ="start">시동 켜기</button>
+		<button onclick = "SuperCar.engineStop()"id ="stop">시동 끄기</button>
+		<button onclick = "initialize()">초기화</button>
+	</fieldset>
+</body>
+
+<script>
+	function actionEnter(){
+		if(window.event.keyCode == 13){
+			var input = document.getElementById("input").value;
+			if(SuperCar.prototype.pw != input){
+				police_count += 1;
+				document.getElementById("text").value = "비밀번호가 틀렸습니다 : "+police_count+"회";
+				if(police_count == 3){
+					document.getElementById("input").style.visibility = "hidden";
+					caps();
+				}
+			}else{
+				SuperCar.engineStart();
+				police_count = 0;
+			}			
+		}
+	}
+	function SuperCar(){
+		this.brand = "Ferrari";
+		this.color = "red";
+		this.price = 80000;
+		
+	}
+	
+	SuperCar.prototype.pw = prompt("자동차 초기비밀번호 입력");
+	const result = document.getElementById(""); //textarea
+	var police_count = 0;
+	var flag = 0;
+	
+	SuperCar.showInput = function(){
+		if(flag == 1){
+			document.getElementById("text").value = "이미 켜져 있습니다.";
+		}else{
+			document.getElementById("input").style.visibility = "visible";
+		}
+	}
+	SuperCar.engineStart = function(){
+		document.getElementById("img").src = "시동켜기.gif";
+		document.getElementById("text").value = "시동켜짐";
+		document.getElementById("input").style.visibility = "hidden";
+		flag = 1;
+	}
+	SuperCar.engineStop = function(){
+		if(flag == 0){
+			document.getElementById("text").value = "이미 꺼져 있습니다.";
+		}else{
+			document.getElementById("img").src = "시동끄기.gif";
+			document.getElementById("text").value = "시동꺼짐";	
+			flag = 0;			
+		}
+	}
+	function caps(){
+		document.getElementById("text").value = "체포중 입니다.";
+		document.getElementById("start").style.display = "none";
+		document.getElementById("stop").style.display = "none";
+		document.getElementById("img").src = "경찰.png";
+	}
+	function initialize(){
+		history.go(0);
+	}
+</script>
+</html>
