@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>함수 실습2</title>
+<!-- history.go(0) : 새로고침 -->
+<link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+<style>
+	table{
+		margin:0 auto;
+		text-align:center;
+		width:30%;
+		font-family:Gugi
+	}
+	
+	thead{
+		background:#fff9c4;
+	}
+	fieldset{
+		width:30%;
+		height:50px;
+		margin:30px auto;
+		padding:15px;
+		size : 10px;
+		text-align:center;
+		font-family:Black Han Sans;
+		font-size:1em;
+	}
+</style>
+	
+
+</head>
+<body>
+	<table border="1">
+			<caption>요금표</caption>
+			<thead>
+				<tr>
+					<th>구분</th>
+					<th>요금</th>
+				</tr>
+			</thead>
+			<tr id=kids>
+				<td class=text>아동</td>
+				<td>무료</td>
+			</tr>
+			<tr id=teen>
+				<td class=text>청소년</td>
+				<td>2000원</td>
+			</tr>
+			<tr id=adult>
+				<td class=text>성인</td>
+				<td>5000원</td>
+			</tr>
+		</table>
+	
+	<fieldset>
+		<legend >구분</legend>
+		<input type ="text" id = "input">
+		<button onclick = "change_color()">확인</button>
+	</fieldset>
+	
+</body>
+<script src = "//code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+	/* $("선택자").parent() : 부모노드 */
+	function change_color(){
+		var input = $("#input").val()
+
+		$.each($(".text"), function(index, item){
+			var temp = $(this)
+			console.log(temp.html())
+			
+			$(this).parent().css("background","white")
+			$(this).text(item.innerHTML.replace("★",""))
+			
+			if(item.innerHTML == input){
+				$(this).parent().css("background-color","red")
+				$(this).text("★"+input)
+			}
+		})
+		
+	}
+
+</script>
+</html>

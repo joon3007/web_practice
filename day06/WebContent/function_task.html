@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&display=swap" rel="stylesheet">
+<link href="function_task.css" rel="stylesheet">
+<style>
+	#round{
+				border:5px solid #ab47bc;
+				margin-left:150px;
+				width:50px;
+				height:50px;
+				background:#ffee58;
+				border-radius:100%;
+				text-align:center;
+				line-height:50px;
+				font-family:Black Han Sans;
+				font-size:1.5rem;
+			}
+</style>
+</head>
+<body>
+	<div id="round">1</div>
+	<fieldset>
+		<legend>숫자를 한글로 변경</legend>
+		<textarea id="result">결과표시부분</textarea>
+		<input type ="text" id = "input"><br>
+		<button onclick = "getResult()">변경</button>
+	</fieldset>
+</body>
+<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+
+	//모든 페이지가 요청 되었을 때
+	$(document).ready(function(){
+		$("#input").keydown(function(key){
+			if(key.keyCode == 13){
+				getResult();
+			}
+		})
+	})
+	
+	function fn1(input){
+		//엄격모드 작동
+		'use strict'
+		var arr = '공일이삼사오육칠팔구'
+		var temp = ''
+		//숫자면 참
+		if(!isNaN(input)){
+			var num = input
+			//전달 받은 값을 인덱스로 접근해서 한글로 변환
+			for(var i = 0; i<num.length;i++){
+				temp += arr[num.charAt(i)]			
+			}
+		}
+		return temp
+	}
+	//dom 기능 작성
+	function getResult(){
+		//입력한 숫자를 가지고 오는 부분
+		//var input = document.getElementById("input").value
+		var input = $("#input").val()
+		//변환된 결과를 가져오는 부분
+		var result = fn1(input)
+		//출력 부분의 태그를 가져온다.
+		//var tag = document.getElementById("result")
+		var tag = $("#result")
+		if(result == undefined || result == ""){
+			//숫자가 아니거나 아무것도 입력하지 않으면 출력
+			result = '숫자만 입력하세요.'
+		}else{
+			//점이 포함되어 있다면(undefined) 한글로 교체
+			result = result.replace(undefined,'점')
+		}
+		//결과창에 출력 입력
+		tag.text(result)
+	}
+</script>
+</html>

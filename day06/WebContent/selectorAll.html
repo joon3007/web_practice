@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	<h1>CSS선택자를 이용한 선택</h1>
+	<ul>
+		<li class ="odd">첫 번째 아이템!</li>
+		<li id = "even">두 번째 아이템!</li>
+		<li class ="odd">세 번째 아이템!</li>
+		<li id = "even">네 번째 아이템!</li>
+		<li class ="odd">다섯 번째 아이템!</li>
+	</ul>
+</body>
+<script>
+	var selectedItemClass = document.querySelectorAll("li.odd");
+	var selectedItemId = document.querySelectorAll("li#even");
+	
+	for(let i = 0; i<selectedItemClass.length; i++){
+		selectedItemClass.item(i).style.color = "yellow";
+	}
+	
+	for(let i = 0; i< selectedItemId.length; i++){
+		selectedItemId.item(i).style.color = "blue";
+	}
+</script>
+</html>
