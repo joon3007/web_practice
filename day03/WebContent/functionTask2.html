@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>함수 실습2</title>
+<!-- history.go(0) : 새로고침 -->
+<link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+<style>
+	table{
+		margin:0 auto;
+		text-align:center;
+		width:30%;
+		font-family:Gugi
+	}
+	
+	thead{
+		background:#fff9c4;
+	}
+	fieldset{
+		width:30%;
+		height:50px;
+		margin:30px auto;
+		padding:15px;
+		size : 10px;
+		text-align:center;
+		font-family:Black Han Sans;
+		font-size:1em;
+	}
+</style>
+	
+
+</head>
+<body>
+	<table border="1">
+			<caption>요금표</caption>
+			<thead>
+				<tr>
+					<th>구분</th>
+					<th>요금</th>
+				</tr>
+			</thead>
+			<tr id=kids>
+				<td id=kids-text>아동</td>
+				<td>무료</td>
+			</tr>
+			<tr id=teen>
+				<td id=teen-text>청소년</td>
+				<td>2000원</td>
+			</tr>
+			<tr id=adult>
+				<td id=adult-text>성인</td>
+				<td>5000원</td>
+			</tr>
+		</table>
+	
+	<fieldset>
+		<legend >구분</legend>
+		<input type ="text" id = "input">
+		<button onclick = "change_color()">확인</button>
+	</fieldset>
+	
+</body>
+<script>
+	function change_color(){
+		var input = document.getElementById("input").value
+		var tr = document.getElementsByTagName("tr")
+		var idx = findNum(tr, input)
+		
+		if(idx != ""){
+			tr[idx].style.background = "red";
+			tr[idx].cells[0].innerHTML = '★'+input
+		}else{
+			alert('다시 시도해주세요')
+		}
+	}
+	
+	function findNum(tr, input){
+		var idx = ""
+		for(var i=1; i<tr.length; i++){
+			tr[i].style.background = "white";
+			var temp = tr[i].cells[0].innerHTML
+			if(temp == input){
+				idx = i
+			}
+			temp = temp.replace("★","")
+			tr[i].cells[0].innerHTML = temp
+		}
+		return idx
+	}
+</script>
+</html>

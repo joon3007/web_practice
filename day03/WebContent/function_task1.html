@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>function task</title>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&display=swap" rel="stylesheet">
+<link href="function_task.css" rel="stylesheet">
+<!-- 태그 객체.value : input 태그에 사용자가 입력한 값 -->
+<!-- "문자열".charAt(인덱스 번호) : 해당 인덱스에 있는 문자 -->
+<!-- "문자열".indexOf(값) : 해당 값이 있는 인덱스 번호 -->
+<!-- "문자열"[] : 해당 인덱스에 있는 문자 -->
+<!-- "변수" = "문자열".replace("기존값", "새로운값") -->
+<!-- button태그 속성값 = onclick="함수명"() -->
+</head>
+<body>
+	<fieldset>
+		<legend>숫자를 한글로 변경</legend>
+		<input type="text" id = "val"><br>
+		<p id ="result"></p>
+		<textarea id="input"></textarea>
+		<input type = "button" value="변경" onclick="fn1()">
+	</fieldset>
+</body>
+<script>
+	function fn1(){
+		var arr = '공일이삼사오육칠팔구'
+		var temp = ''
+		var num = document.getElementById("input").value
+		for(var i = 0; i<num.length;i++){
+				if(num.charAt(i) == '.'){
+					temp += '점';
+				}else{
+					temp += arr[number(num.charAt(i))];				
+				}
+		}
+		document.getElementById("result").value = temp;
+	}
+</script>
+</html>
