@@ -1,0 +1,20 @@
+{
+	"search_word": [
+		{
+			"rank": 1,
+			"name": "JSP"
+		},
+		{
+			"rank": 2,
+			"name": "웹 개발"
+		},
+		{
+			"rank": 3,
+			"name": "IOT"
+		},
+		{
+			"rank": 4,
+			"name": "스마트 팩토리"
+		}
+	]
+}
