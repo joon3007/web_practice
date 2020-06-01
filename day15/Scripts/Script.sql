@@ -1,0 +1,20 @@
+SELECT * FROM tab;
+
+
+DROP TABLE "MEMBER";
+CREATE TABLE "MEMBER"(
+	ID varchar2(20),
+	NAME varchar2(20),
+	PW varchar2(30),
+	GENDER varchar2(10),
+	ZIPCODE varchar2(10),
+	ADDRESS varchar2(200),
+	ADDRESS_DETAIL varchar2(200),
+	ADDRESS_ETC varchar2(200),
+	HP VARCHAR2(20),
+	HOBBY VARCHAR2(15),
+	CONSTRAINT MEMBER_PK PRIMARY KEY (ID)
+);
+
+INSERT INTO "MEMBER" values('joon3008', '김휘준', '1111','','','','','','','');
+SELECT * FROM MEMBER;
