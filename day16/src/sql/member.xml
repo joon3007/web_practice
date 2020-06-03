@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Member">
+ <select id="login" parameterType="hashmap" resultType="_int">
+ 	SELECT count(*) from member where id = #{id} and pw= #{pw}
+ </select>
+ <select id="checkId" parameterType="hashmap" resultType="_int">
+ 	SELECT count(*) from member where id = #{id}
+ </select>
+ 
+ <!-- 
+
+  <insert id="join" parameterType="hashmap" resultType="_int">
+	insert into \"MEMBER\" values(#{id},#{name},#{pw},#{gender},#{zipcode},#{address},
+	#{address_detail},#{address_etc},#{hp},#{hobby})
+ </insert>
+ -->
+</mapper>
