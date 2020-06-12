@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Board">
+
+	<select id="getSeq" resultType="_int">
+	select board_seq.currval from dual
+	</select>
+   <select id="boardCnt" resultType="_int">
+   	select count(*) from board
+   </select>
+   
+   <!-- $심볼은 parameter type을 그대로 유지 시킨다. #은 문자열로 바꾼다. -->
+   <select id="listAll" parameterType="map" resultType="boardBean">
+	select * from 
+   		(select rownum r, D.* from 
+   			(select * from board order by board_num desc) D) A
+	where A.r between ${startRow} and ${endRow}
+   </select>
+   
+   <insert id="insertBoard" parameterType="boardBean">
+   insert into board values(board_seq.nextval, #{board_title},#{board_contents},
+   #{member_id},sysdate,0)
+   </insert>
+</mapper>
